@@ -1,36 +1,40 @@
-[config] WARNING: Ignored YAML document with GroupVersionKind kubeadm.k8s.io/v1alpha3, Kind=JoinConfiguration
-[init] using Kubernetes version: v1.11.7
-[preflight] running pre-flight checks
-[preflight/images] Would pull the required images (like 'kubeadm config images pull')
-[kubelet] Writing kubelet environment file with flags to file "/tmp/kubeadm-init-dryrun421898322/kubeadm-flags.env"
-[kubelet] Writing kubelet configuration to file "/tmp/kubeadm-init-dryrun421898322/config.yaml"
-[certificates] Generated front-proxy-ca certificate and key.
-[certificates] Generated front-proxy-client certificate and key.
-[certificates] Generated etcd/ca certificate and key.
-[certificates] Generated etcd/server certificate and key.
-[certificates] etcd/server serving cert is signed for DNS names [master1 localhost] and IPs [127.0.0.1 ::1]
-[certificates] Generated etcd/peer certificate and key.
-[certificates] etcd/peer serving cert is signed for DNS names [master1 localhost] and IPs [4.3.2.1 127.0.0.1 ::1]
-[certificates] Generated etcd/healthcheck-client certificate and key.
-[certificates] Generated apiserver-etcd-client certificate and key.
-[certificates] Generated ca certificate and key.
-[certificates] Generated apiserver certificate and key.
-[certificates] apiserver serving cert is signed for DNS names [master1 kubernetes kubernetes.default kubernetes.default.svc kubernetes.default.svc.cluster.local mycluster.lb.domain.tld] and IPs [10.96.0.1 4.3.2.1]
-[certificates] Generated apiserver-kubelet-client certificate and key.
-[certificates] valid certificates and keys now exist in "/tmp/kubeadm-init-dryrun421898322"
-[certificates] Generated sa key and public key.
+[init] Using Kubernetes version: v1.12.5
+[preflight] Running pre-flight checks
+[preflight] Would pull the required images (like 'kubeadm config images pull')
+[kubelet-start] Writing kubelet environment file with flags to file "/tmp/kubeadm-init-dryrun260672911/kubeadm-flags.env"
+[kubelet-start] Writing kubelet configuration to file "/tmp/kubeadm-init-dryrun260672911/config.yaml"
+[certs] Using certificateDir folder "/tmp/kubeadm-init-dryrun260672911"
+[certs] Generating "etcd/ca" certificate and key
+[certs] Generating "apiserver-etcd-client" certificate and key
+[certs] Generating "etcd/server" certificate and key
+[certs] etcd/server serving cert is signed for DNS names [master1 localhost] and IPs [4.3.2.1 127.0.0.1 ::1]
+[certs] Generating "etcd/healthcheck-client" certificate and key
+[certs] Generating "etcd/peer" certificate and key
+[certs] etcd/peer serving cert is signed for DNS names [master1 localhost] and IPs [4.3.2.1 127.0.0.1 ::1]
+[certs] Generating "ca" certificate and key
+[certs] Generating "apiserver" certificate and key
+[certs] apiserver serving cert is signed for DNS names [master1 kubernetes kubernetes.default kubernetes.default.svc kubernetes.default.svc.cluster.local mycluster.lb.domain.tld] and IPs [10.96.0.1 4.3.2.1]
+[certs] Generating "apiserver-kubelet-client" certificate and key
+[certs] Generating "front-proxy-ca" certificate and key
+[certs] Generating "front-proxy-client" certificate and key
+[certs] Generating "sa" key and public key
+[kubeconfig] Using kubeconfig folder "/tmp/kubeadm-init-dryrun260672911"
 [endpoint] WARNING: port specified in controlPlaneEndpoint overrides bindPort in the controlplane address
-[kubeconfig] Wrote KubeConfig file to disk: "/tmp/kubeadm-init-dryrun421898322/admin.conf"
-[kubeconfig] Wrote KubeConfig file to disk: "/tmp/kubeadm-init-dryrun421898322/kubelet.conf"
-[kubeconfig] Wrote KubeConfig file to disk: "/tmp/kubeadm-init-dryrun421898322/controller-manager.conf"
-[kubeconfig] Wrote KubeConfig file to disk: "/tmp/kubeadm-init-dryrun421898322/scheduler.conf"
-[controlplane] wrote Static Pod manifest for component kube-apiserver to "/tmp/kubeadm-init-dryrun421898322/kube-apiserver.yaml"
-[controlplane] wrote Static Pod manifest for component kube-controller-manager to "/tmp/kubeadm-init-dryrun421898322/kube-controller-manager.yaml"
-[controlplane] wrote Static Pod manifest for component kube-scheduler to "/tmp/kubeadm-init-dryrun421898322/kube-scheduler.yaml"
-[etcd] Wrote Static Pod manifest for a local etcd instance to "/tmp/kubeadm-init-dryrun421898322/etcd.yaml"
-[dryrun] wrote certificates, kubeconfig files and control plane manifests to the "/tmp/kubeadm-init-dryrun421898322" directory
-[dryrun] the certificates or kubeconfig files would not be printed due to their sensitive nature
-[dryrun] please examine the "/tmp/kubeadm-init-dryrun421898322" directory for details about what would be written
+[kubeconfig] Writing "admin.conf" kubeconfig file
+[endpoint] WARNING: port specified in controlPlaneEndpoint overrides bindPort in the controlplane address
+[kubeconfig] Writing "kubelet.conf" kubeconfig file
+[endpoint] WARNING: port specified in controlPlaneEndpoint overrides bindPort in the controlplane address
+[kubeconfig] Writing "controller-manager.conf" kubeconfig file
+[endpoint] WARNING: port specified in controlPlaneEndpoint overrides bindPort in the controlplane address
+[kubeconfig] Writing "scheduler.conf" kubeconfig file
+[control-plane] Using manifest folder "/tmp/kubeadm-init-dryrun260672911"
+[control-plane] Creating static Pod manifest for "kube-apiserver"
+[control-plane] Creating static Pod manifest for "kube-controller-manager"
+[control-plane] Creating static Pod manifest for "kube-scheduler"
+[etcd] Creating static Pod manifest for local etcd in "/tmp/kubeadm-init-dryrun260672911"
+[dryrun] Wrote certificates, kubeconfig files and control plane manifests to the "/tmp/kubeadm-init-dryrun260672911" directory
+[dryrun] The certificates or kubeconfig files would not be printed due to their sensitive nature
+[dryrun] Please examine the "/tmp/kubeadm-init-dryrun260672911" directory for details about what would be written
 [dryrun] Would write file "/etc/kubernetes/manifests/kube-apiserver.yaml" with content:
 	apiVersion: v1
 	kind: Pod
@@ -73,7 +77,7 @@
 	    - --service-cluster-ip-range=10.96.0.0/12
 	    - --tls-cert-file=/etc/kubernetes/pki/apiserver.crt
 	    - --tls-private-key-file=/etc/kubernetes/pki/apiserver.key
-	    image: k8s.gcr.io/kube-apiserver:v1.11.7
+	    image: k8s.gcr.io/kube-apiserver:v1.12.5
 	    imagePullPolicy: IfNotPresent
 	    livenessProbe:
 	      failureThreshold: 8
@@ -89,18 +93,22 @@
 	      requests:
 	        cpu: 250m
 	    volumeMounts:
-	    - mountPath: /etc/kubernetes/pki
-	      name: k8s-certs
-	      readOnly: true
 	    - mountPath: /etc/ssl/certs
 	      name: ca-certs
 	      readOnly: true
 	    - mountPath: /etc/pki
 	      name: etc-pki
 	      readOnly: true
+	    - mountPath: /etc/kubernetes/pki
+	      name: k8s-certs
+	      readOnly: true
 	  hostNetwork: true
 	  priorityClassName: system-cluster-critical
 	  volumes:
+	  - hostPath:
+	      path: /etc/ssl/certs
+	      type: DirectoryOrCreate
+	    name: ca-certs
 	  - hostPath:
 	      path: /etc/pki
 	      type: DirectoryOrCreate
@@ -109,10 +117,6 @@
 	      path: /etc/kubernetes/pki
 	      type: DirectoryOrCreate
 	    name: k8s-certs
-	  - hostPath:
-	      path: /etc/ssl/certs
-	      type: DirectoryOrCreate
-	    name: ca-certs
 	status: {}
 [dryrun] Would write file "/etc/kubernetes/manifests/kube-controller-manager.yaml" with content:
 	apiVersion: v1
@@ -132,6 +136,9 @@
 	    - kube-controller-manager
 	    - --address=127.0.0.1
 	    - --allocate-node-cidrs=true
+	    - --authentication-kubeconfig=/etc/kubernetes/controller-manager.conf
+	    - --authorization-kubeconfig=/etc/kubernetes/controller-manager.conf
+	    - --client-ca-file=/etc/kubernetes/pki/ca.crt
 	    - --cluster-cidr=10.233.0.0/16
 	    - --cluster-signing-cert-file=/etc/kubernetes/pki/ca.crt
 	    - --cluster-signing-key-file=/etc/kubernetes/pki/ca.key
@@ -139,10 +146,11 @@
 	    - --kubeconfig=/etc/kubernetes/controller-manager.conf
 	    - --leader-elect=true
 	    - --node-cidr-mask-size=24
+	    - --requestheader-client-ca-file=/etc/kubernetes/pki/front-proxy-ca.crt
 	    - --root-ca-file=/etc/kubernetes/pki/ca.crt
 	    - --service-account-private-key-file=/etc/kubernetes/pki/sa.key
 	    - --use-service-account-credentials=true
-	    image: k8s.gcr.io/kube-controller-manager:v1.11.7
+	    image: k8s.gcr.io/kube-controller-manager:v1.12.5
 	    imagePullPolicy: IfNotPresent
 	    livenessProbe:
 	      failureThreshold: 8
@@ -158,25 +166,25 @@
 	      requests:
 	        cpu: 200m
 	    volumeMounts:
-	    - mountPath: /etc/kubernetes/pki
-	      name: k8s-certs
-	      readOnly: true
 	    - mountPath: /etc/ssl/certs
 	      name: ca-certs
 	      readOnly: true
-	    - mountPath: /etc/kubernetes/controller-manager.conf
-	      name: kubeconfig
-	      readOnly: true
 	    - mountPath: /etc/pki
 	      name: etc-pki
+	      readOnly: true
+	    - mountPath: /etc/kubernetes/pki
+	      name: k8s-certs
+	      readOnly: true
+	    - mountPath: /etc/kubernetes/controller-manager.conf
+	      name: kubeconfig
 	      readOnly: true
 	  hostNetwork: true
 	  priorityClassName: system-cluster-critical
 	  volumes:
 	  - hostPath:
-	      path: /etc/kubernetes/controller-manager.conf
-	      type: FileOrCreate
-	    name: kubeconfig
+	      path: /etc/ssl/certs
+	      type: DirectoryOrCreate
+	    name: ca-certs
 	  - hostPath:
 	      path: /etc/pki
 	      type: DirectoryOrCreate
@@ -186,9 +194,9 @@
 	      type: DirectoryOrCreate
 	    name: k8s-certs
 	  - hostPath:
-	      path: /etc/ssl/certs
-	      type: DirectoryOrCreate
-	    name: ca-certs
+	      path: /etc/kubernetes/controller-manager.conf
+	      type: FileOrCreate
+	    name: kubeconfig
 	status: {}
 [dryrun] Would write file "/etc/kubernetes/manifests/kube-scheduler.yaml" with content:
 	apiVersion: v1
@@ -209,7 +217,7 @@
 	    - --address=127.0.0.1
 	    - --kubeconfig=/etc/kubernetes/scheduler.conf
 	    - --leader-elect=true
-	    image: k8s.gcr.io/kube-scheduler:v1.11.7
+	    image: k8s.gcr.io/kube-scheduler:v1.12.5
 	    imagePullPolicy: IfNotPresent
 	    livenessProbe:
 	      failureThreshold: 8
@@ -237,7 +245,7 @@
 	    name: kubeconfig
 	status: {}
 [dryrun] Would write file "/var/lib/kubelet/config.yaml" with content:
-	address: 1.2.3.4
+	address: 0.0.0.0
 	apiVersion: kubelet.config.k8s.io/v1beta1
 	authentication:
 	  anonymous:
@@ -295,6 +303,7 @@
 	maxOpenFiles: 1000000
 	maxPods: 110
 	nodeLeaseDurationSeconds: 40
+	nodeStatusReportFrequency: 1m0s
 	nodeStatusUpdateFrequency: 10s
 	oomScoreAdj: -999
 	podPidsLimit: -1
@@ -311,11 +320,8 @@
 	volumeStatsAggPeriod: 1m0s
 [dryrun] Would write file "/var/lib/kubelet/kubeadm-flags.env" with content:
 	KUBELET_KUBEADM_ARGS=--container-runtime=remote --container-runtime-endpoint=/run/containerd/containerd.sock
-[init] waiting for the kubelet to boot up the control plane as Static Pods from directory "/etc/kubernetes/manifests" 
-[init] this might take a minute or longer if the control plane images have to be pulled
-[dryrun] Would wait for the API Server's /healthz endpoint to return 'ok'
+[wait-control-plane] Waiting for the kubelet to boot up the control plane as static Pods from directory "/tmp/kubeadm-init-dryrun260672911". This can take up to 4m0s
 [uploadconfig] storing the configuration used in ConfigMap "kubeadm-config" in the "kube-system" Namespace
-[dryrun] Would make sure the kubelet "http://localhost:10248/healthz" endpoint is healthy
 [dryrun] Would perform action GET on resource "configmaps" in API group "core/v1"
 [dryrun] Resource name: "kubeadm-config"
 [dryrun] Would perform action CREATE on resource "configmaps" in API group "core/v1"
@@ -323,34 +329,34 @@
 	apiVersion: v1
 	data:
 	  ClusterConfiguration: |
-	    apiServerExtraArgs:
-	      authorization-mode: Node,RBAC
-	    apiVersion: kubeadm.k8s.io/v1alpha3
-	    auditPolicy:
-	      logDir: /var/log/kubernetes/audit
-	      logMaxAge: 2
-	      path: /path/to/audit/policy
-	    certificatesDir: /tmp/kubeadm-init-dryrun421898322
+	    apiServer:
+	      extraArgs:
+	        authorization-mode: Node,RBAC
+	      timeoutForControlPlane: 4m0s
+	    apiVersion: kubeadm.k8s.io/v1beta1
+	    certificatesDir: /etc/kubernetes/pki
 	    clusterName: kubernetes
 	    controlPlaneEndpoint: mycluster.lb.domain.tld:443
+	    controllerManager: {}
+	    dns:
+	      type: CoreDNS
 	    etcd:
 	      local:
 	        dataDir: /var/lib/etcd
-	        image: repo/etc-image
 	    imageRepository: k8s.gcr.io
 	    kind: ClusterConfiguration
-	    kubernetesVersion: v1.11.7
+	    kubernetesVersion: v1.12.5
 	    networking:
 	      dnsDomain: cluster.local
 	      podSubnet: 10.233.0.0/16
 	      serviceSubnet: 10.96.0.0/12
-	    unifiedControlPlaneImage: ""
+	    scheduler: {}
 	  ClusterStatus: |
 	    apiEndpoints:
 	      master1:
 	        advertiseAddress: 4.3.2.1
 	        bindPort: 6443
-	    apiVersion: kubeadm.k8s.io/v1alpha3
+	    apiVersion: kubeadm.k8s.io/v1beta1
 	    kind: ClusterStatus
 	kind: ConfigMap
 	metadata:
@@ -391,13 +397,13 @@
 	  name: system:bootstrappers:kubeadm:default-node-token
 	- kind: Group
 	  name: system:nodes
-[kubelet] Creating a ConfigMap "kubelet-config-1.11" in namespace kube-system with the configuration for the kubelets in the cluster
+[kubelet] Creating a ConfigMap "kubelet-config-1.12" in namespace kube-system with the configuration for the kubelets in the cluster
 [dryrun] Would perform action CREATE on resource "configmaps" in API group "core/v1"
 [dryrun] Attached object:
 	apiVersion: v1
 	data:
 	  kubelet: |
-	    address: 1.2.3.4
+	    address: 0.0.0.0
 	    apiVersion: kubelet.config.k8s.io/v1beta1
 	    authentication:
 	      anonymous:
@@ -455,6 +461,7 @@
 	    maxOpenFiles: 1000000
 	    maxPods: 110
 	    nodeLeaseDurationSeconds: 40
+	    nodeStatusReportFrequency: 1m0s
 	    nodeStatusUpdateFrequency: 10s
 	    oomScoreAdj: -999
 	    podPidsLimit: -1
@@ -472,7 +479,7 @@
 	kind: ConfigMap
 	metadata:
 	  creationTimestamp: null
-	  name: kubelet-config-1.11
+	  name: kubelet-config-1.12
 	  namespace: kube-system
 [dryrun] Would perform action CREATE on resource "roles" in API group "rbac.authorization.k8s.io/v1"
 [dryrun] Attached object:
@@ -480,13 +487,13 @@
 	kind: Role
 	metadata:
 	  creationTimestamp: null
-	  name: kubeadm:kubelet-config-1.11
+	  name: kubeadm:kubelet-config-1.12
 	  namespace: kube-system
 	rules:
 	- apiGroups:
 	  - ""
 	  resourceNames:
-	  - kubelet-config-1.11
+	  - kubelet-config-1.12
 	  resources:
 	  - configmaps
 	  verbs:
@@ -497,25 +504,17 @@
 	kind: RoleBinding
 	metadata:
 	  creationTimestamp: null
-	  name: kubeadm:kubelet-config-1.11
+	  name: kubeadm:kubelet-config-1.12
 	  namespace: kube-system
 	roleRef:
 	  apiGroup: rbac.authorization.k8s.io
 	  kind: Role
-	  name: kubeadm:kubelet-config-1.11
+	  name: kubeadm:kubelet-config-1.12
 	subjects:
 	- kind: Group
 	  name: system:nodes
 	- kind: Group
 	  name: system:bootstrappers:kubeadm:default-node-token
-[markmaster] Marking the node master1 as master by adding the label "node-role.kubernetes.io/master=''"
-[markmaster] Marking the node master1 as master by adding the taints [node-role.kubernetes.io/master:NoSchedule]
-[dryrun] Would perform action GET on resource "nodes" in API group "core/v1"
-[dryrun] Resource name: "master1"
-[dryrun] Would perform action PATCH on resource "nodes" in API group "core/v1"
-[dryrun] Resource name: "master1"
-[dryrun] Attached patch:
-	{"metadata":{"labels":{"node-role.kubernetes.io/master":""}},"spec":{"taints":[{"effect":"NoSchedule","key":"node-role.kubernetes.io/master"}]}}
 [patchnode] Uploading the CRI Socket information "/run/containerd/containerd.sock" to the Node API object "master1" as an annotation
 [dryrun] Would perform action GET on resource "nodes" in API group "core/v1"
 [dryrun] Resource name: "master1"
@@ -523,7 +522,16 @@
 [dryrun] Resource name: "master1"
 [dryrun] Attached patch:
 	{"metadata":{"annotations":{"kubeadm.alpha.kubernetes.io/cri-socket":"/run/containerd/containerd.sock"}}}
-[bootstraptoken] using token: abcdef.0123456789abcdef
+[mark-control-plane] Marking the node master1 as control-plane by adding the label "node-role.kubernetes.io/master=''"
+[mark-control-plane] Marking the node master1 as control-plane by adding the taints [node-role.kubernetes.io/master:NoSchedule]
+[dryrun] Would perform action GET on resource "nodes" in API group "core/v1"
+[dryrun] Resource name: "master1"
+[dryrun] Would perform action PATCH on resource "nodes" in API group "core/v1"
+[dryrun] Resource name: "master1"
+[dryrun] Attached patch:
+	{"metadata":{"labels":{"node-role.kubernetes.io/master":""}},"spec":{"taints":[{"effect":"NoSchedule","key":"node-role.kubernetes.io/master"}]}}
+[bootstrap-token] Using token: abcdef.0123456789abcdef
+[bootstrap-token] Configuring bootstrap tokens, cluster-info ConfigMap, RBAC Roles
 [dryrun] Would perform action GET on resource "secrets" in API group "core/v1"
 [dryrun] Resource name: "bootstrap-token-abcdef"
 [dryrun] Would perform action CREATE on resource "secrets" in API group "core/v1"
@@ -531,7 +539,7 @@
 	apiVersion: v1
 	data:
 	  auth-extra-groups: c3lzdGVtOmJvb3RzdHJhcHBlcnM6a3ViZWFkbTpkZWZhdWx0LW5vZGUtdG9rZW4=
-	  expiration: MjAxOS0wMi0wMlQxMTowOTowNFo=
+	  expiration: MjAxOS0wMi0wMlQxMTo0MDo0MFo=
 	  token-id: YWJjZGVm
 	  token-secret: MDEyMzQ1Njc4OWFiY2RlZg==
 	  usage-bootstrap-authentication: dHJ1ZQ==
@@ -596,7 +604,7 @@
 	    apiVersion: v1
 	    clusters:
 	    - cluster:
-	        certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUN5RENDQWJDZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRFNU1ESXdNVEV4TURrd01Wb1hEVEk1TURFeU9URXhNRGt3TVZvd0ZURVRNQkVHQTFVRQpBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBSmJVCjBkeDVmK09JMHBQMWVzYm5RaWllRHo3RjhSOC9KQjk1K0ZIYkdGTWx6WEdFZjQyTVhoT2VGemdESTQwSExuL1cKWHBSTHRDMVhnY09kVHRqeTJ0V2o3Z2dRS1FPUmlaREhCeVRnelNSTWcvblpzZ0hlWitJOWR6ODBZVnZ4Z3hrNQpGYXNNK0g5Y0dMcEZDc3FYN2hMZk5Eb012eVd3ZHNXVzkyUHZML0JpRnh4UFdtejJ1NVpQQWNKclZNa1JzOXlaCnZVeXNaT2huMm1Uc1B5YnlyMjRlaVhvZ1ZidGwvOXptM2hXTzJjVDRUSXdBbG1TejBZZDl1WU0ySWlzc1AxYjYKeG5vQU52UUpKYjhlaXppZWIybHFDSlRscmlxQ0dvM0w5T2U5cm5lS2VlNFJhNW96QXpxb3RPUklFMk1qdWtsSApvbVhCZDU4MTVMQzhNMVpNMXI4Q0F3RUFBYU1qTUNFd0RnWURWUjBQQVFIL0JBUURBZ0trTUE4R0ExVWRFd0VCCi93UUZNQU1CQWY4d0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQkFGV2drKzNQRlhiM2U5aGFlT2tsMmY4T2lVOUQKS3VMU3ZNa2o1aU9jNUJTVGxzeEdRaDFKSCtGRW91bGMwM2lwUlphVlJyUXhvYlBIbmRWbVo1NTZ6RnVCNHBnRwpTUmY5ZGRGNHJvZVlFeEg3c3pmcVlMdTEzVnJtSVZMcFVyRDlhekNZeGZMZk5FWjJWS3ZxZnhybUtVQjJxdzEyCjdPTnhXWkhSVGRSWlA0OSszamdIL0JtM2ZQaHk1ZGNVdE52K1BKNVRYUGZPb3dYNXJoeXRSVzFta1RBUjNpTHgKcmQyWWowK0dueXg4S0JMR2swSzV6elh1UUh0RmRXTU9JbmVpV1Y5eXh3dVF3ZGRFdVFBbXE1TWtjd2swTlBoVApQZWFaejZBdEMyL2pZV2w5OVo2bDZwbmNpODRDQnJPRGZaa2dmYWl1RTNZdDhsR0hVRHdVWC9uLzFXUT0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+	        certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUN5RENDQWJDZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRFNU1ESXdNVEV4TkRBek4xb1hEVEk1TURFeU9URXhOREF6TjFvd0ZURVRNQkVHQTFVRQpBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBTHUyCjlOVndCOG9IelBsNG1GVTJxOEVsSUNYaExZTUdXWWlQWU9RanpUSUsrMHlGRkRaNHlJWGhKZDlJd2tEZG16S1oKb2p5d0htdEJSaHpxQmpxWGwzaHFmMjdtKzFmeHIxcC9xbWRkZFgyejRjNXdUc2p2amU1alcvcmk3QVJrWjZ5Uwo0OG5ZQlRmbkNaM1hKVUtFQVBzZ1RmWnlrS0VaL0ZFYXRDNkxaSWZIaFpLZ2JVek1taWF2WjBndWlNb1lYQ2thCll2WHV2eWdDWS9NanFlYnh6VkJGNHQ1MWIyMWtCOXB3cVViSDEvdTVoQlVFbUtnQW5GY2FSakU2QVArWDNMUDEKNURldGg3ZjBIcXEwampGT0VjSzBaM2RvcDVzU1V0NTlkS3ptMmVOVlVUY3hpSFl3WWdQd3VRb3prL3BLVVg3VApRaEZOOS9XdFFmR0ZIazlPWms4Q0F3RUFBYU1qTUNFd0RnWURWUjBQQVFIL0JBUURBZ0trTUE4R0ExVWRFd0VCCi93UUZNQU1CQWY4d0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQkFJRlJwQ011YnYxUEltTFU1RUdSVDN2emw5OTAKd0ozcnJCb2RpUldOdEZIcUpZdnlrUkJKQ0lkajJtQThBV0NsZStnUG05QU9ReGhoV1pFeElPenZOZVUzZHJkbgpUK1djMnhES1pPT2dsTTdXMlBmZ3QrNzJ2SDZ5R0J6WlNzQ1d6N0lPNEJsZEE0cVltRWNFdTBJSUowb3pUdndaCllzSXRUWEtvd3NmNmw1YUpsUGdNWGZZVXJrOUduWUhRS0NoQUJ6UndML0dyNTIxSXk2Y3UxN29aZWdnd1IyekIKWWdCcVlwUXg5c2txbHFZUnUrcTVCVmFxUmd4ZE1CQVNlam1LT1JsWUZQYzg0MHpQQ1lqTWJWcWxMYjR0b3FwbQpEdzZRNnJsdll3cGFHYThRbHRBNGFvSmRmVUZhbzY0eHVuM2QrN0tFa2VQek8wQmM2TW9PdU1BV2YrUT0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
 	        server: https://mycluster.lb.domain.tld:443
 	      name: ""
 	    contexts: []
@@ -676,6 +684,12 @@
 	  verbs:
 	  - list
 	  - watch
+	- apiGroups:
+	  - ""
+	  resources:
+	  - nodes
+	  verbs:
+	  - get
 [dryrun] Would perform action CREATE on resource "clusterrolebindings" in API group "rbac.authorization.k8s.io/v1"
 [dryrun] Attached object:
 	apiVersion: rbac.authorization.k8s.io/v1
@@ -728,7 +742,7 @@
 	      - args:
 	        - -conf
 	        - /etc/coredns/Corefile
-	        image: k8s.gcr.io/coredns:1.2.2
+	        image: k8s.gcr.io/coredns:1.2.6
 	        imagePullPolicy: IfNotPresent
 	        livenessProbe:
 	          failureThreshold: 5
@@ -919,7 +933,13 @@
 	      - command:
 	        - /usr/local/bin/kube-proxy
 	        - --config=/var/lib/kube-proxy/config.conf
-	        image: k8s.gcr.io/kube-proxy:v1.11.7
+	        - --hostname-override=$(NODE_NAME)
+	        env:
+	        - name: NODE_NAME
+	          valueFrom:
+	            fieldRef:
+	              fieldPath: spec.nodeName
+	        image: k8s.gcr.io/kube-proxy:v1.12.5
 	        imagePullPolicy: IfNotPresent
 	        name: kube-proxy
 	        resources: {}
@@ -1006,4 +1026,21 @@
 	- kind: Group
 	  name: system:bootstrappers:kubeadm:default-node-token
 [addons] Applied essential addon: kube-proxy
-[dryrun] finished dry-running successfully. Above are the resources that would be created
+
+Your Kubernetes master has initialized successfully!
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /tmp/kubeadm-init-dryrun260672911/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+You can now join any number of machines by running the following on each node
+as root:
+
+  kubeadm join mycluster.lb.domain.tld:443 --token abcdef.0123456789abcdef --discovery-token-ca-cert-hash sha256:4635cf18606b376d457e92eb1a962b8b30b45b4539657c63804634e919af1747
+

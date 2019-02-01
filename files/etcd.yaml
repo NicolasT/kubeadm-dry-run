@@ -13,15 +13,15 @@ spec:
   containers:
   - command:
     - etcd
-    - --advertise-client-urls=https://127.0.0.1:2379
+    - --advertise-client-urls=https://4.3.2.1:2379
     - --cert-file=/etc/kubernetes/pki/etcd/server.crt
     - --client-cert-auth=true
     - --data-dir=/var/lib/etcd
-    - --initial-advertise-peer-urls=https://127.0.0.1:2380
-    - --initial-cluster=master1=https://127.0.0.1:2380
+    - --initial-advertise-peer-urls=https://4.3.2.1:2380
+    - --initial-cluster=master1=https://4.3.2.1:2380
     - --key-file=/etc/kubernetes/pki/etcd/server.key
-    - --listen-client-urls=https://127.0.0.1:2379
-    - --listen-peer-urls=https://127.0.0.1:2380
+    - --listen-client-urls=https://127.0.0.1:2379,https://4.3.2.1:2379
+    - --listen-peer-urls=https://4.3.2.1:2380
     - --name=master1
     - --peer-cert-file=/etc/kubernetes/pki/etcd/peer.crt
     - --peer-client-cert-auth=true
@@ -29,7 +29,7 @@ spec:
     - --peer-trusted-ca-file=/etc/kubernetes/pki/etcd/ca.crt
     - --snapshot-count=10000
     - --trusted-ca-file=/etc/kubernetes/pki/etcd/ca.crt
-    image: repo/etc-image
+    image: k8s.gcr.io/etcd:3.2.24
     imagePullPolicy: IfNotPresent
     livenessProbe:
       exec:
@@ -53,11 +53,11 @@ spec:
   priorityClassName: system-cluster-critical
   volumes:
   - hostPath:
-      path: /var/lib/etcd
-      type: DirectoryOrCreate
-    name: etcd-data
-  - hostPath:
       path: /etc/kubernetes/pki/etcd
       type: DirectoryOrCreate
     name: etcd-certs
+  - hostPath:
+      path: /var/lib/etcd
+      type: DirectoryOrCreate
+    name: etcd-data
 status: {}

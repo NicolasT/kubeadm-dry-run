@@ -1,7 +1,4 @@
-apiEndpoint:
-  advertiseAddress: 4.3.2.1
-  bindPort: 6443
-apiVersion: kubeadm.k8s.io/v1alpha3
+apiVersion: kubeadm.k8s.io/v1beta1
 bootstrapTokens:
 - groups:
   - system:bootstrappers:kubeadm:default-node-token
@@ -11,6 +8,9 @@ bootstrapTokens:
   - signing
   - authentication
 kind: InitConfiguration
+localAPIEndpoint:
+  advertiseAddress: 4.3.2.1
+  bindPort: 6443
 nodeRegistration:
   criSocket: /run/containerd/containerd.sock
   name: master1
@@ -18,85 +18,28 @@ nodeRegistration:
   - effect: NoSchedule
     key: node-role.kubernetes.io/master
 ---
-apiVersion: kubeadm.k8s.io/v1alpha3
-auditPolicy:
-  logDir: /var/log/kubernetes/audit
-  logMaxAge: 2
-  path: "/path/to/audit/policy"
+apiServer:
+  timeoutForControlPlane: 4m0s
+apiVersion: kubeadm.k8s.io/v1beta1
 certificatesDir: /etc/kubernetes/pki
 clusterName: kubernetes
 controlPlaneEndpoint: "mycluster.lb.domain.tld:443"
+controllerManager: {}
+dns:
+  type: CoreDNS
 etcd:
   local:
     dataDir: /var/lib/etcd
-    image: "repo/etc-image"
 imageRepository: k8s.gcr.io
 kind: ClusterConfiguration
-kubernetesVersion: v1.11.7
+kubernetesVersion: v1.12.5
 networking:
   dnsDomain: cluster.local
   podSubnet: "10.233.0.0/16"
   serviceSubnet: 10.96.0.0/12
-unifiedControlPlaneImage: ""
+scheduler: {}
 ---
-apiEndpoint:
-  advertiseAddress: 10.200.1.116
-  bindPort: 6443
-apiVersion: kubeadm.k8s.io/v1alpha3
-caCertPath: /etc/kubernetes/pki/ca.crt
-clusterName: kubernetes
-discoveryFile: ""
-discoveryTimeout: 5m0s
-discoveryToken: abcdef.0123456789abcdef
-discoveryTokenAPIServers:
-- kube-apiserver:6443
-discoveryTokenUnsafeSkipCAVerification: true
-kind: JoinConfiguration
-nodeRegistration:
-  criSocket: /run/containerd/containerd.sock
-  name: master1
-tlsBootstrapToken: abcdef.0123456789abcdef
-token: abcdef.0123456789abcdef
----
-apiVersion: kubeproxy.config.k8s.io/v1alpha1
-bindAddress: 0.0.0.0
-clientConnection:
-  acceptContentTypes: ""
-  burst: 10
-  contentType: application/vnd.kubernetes.protobuf
-  kubeconfig: /var/lib/kube-proxy/kubeconfig.conf
-  qps: 5
-clusterCIDR: ""
-configSyncPeriod: 15m0s
-conntrack:
-  max: null
-  maxPerCore: 32768
-  min: 131072
-  tcpCloseWaitTimeout: 1h0m0s
-  tcpEstablishedTimeout: 24h0m0s
-enableProfiling: false
-healthzBindAddress: 0.0.0.0:10256
-hostnameOverride: "master1"
-iptables:
-  masqueradeAll: false
-  masqueradeBit: 14
-  minSyncPeriod: 0s
-  syncPeriod: 30s
-ipvs:
-  excludeCIDRs: null
-  minSyncPeriod: 0s
-  scheduler: ""
-  syncPeriod: 30s
-kind: KubeProxyConfiguration
-metricsBindAddress: 127.0.0.1:10249
-mode: ""
-nodePortAddresses: ['1.2.3.4/32']
-oomScoreAdj: -999
-portRange: ""
-resourceContainer: /kube-proxy
-udpIdleTimeout: 250ms
----
-address: 1.2.3.4
+address: 0.0.0.0
 apiVersion: kubelet.config.k8s.io/v1beta1
 authentication:
   anonymous:
@@ -154,6 +97,7 @@ makeIPTablesUtilChains: true
 maxOpenFiles: 1000000
 maxPods: 110
 nodeLeaseDurationSeconds: 40
+nodeStatusReportFrequency: 1m0s
 nodeStatusUpdateFrequency: 10s
 oomScoreAdj: -999
 podPidsLimit: -1
@@ -168,3 +112,41 @@ staticPodPath: /etc/kubernetes/manifests
 streamingConnectionIdleTimeout: 4h0m0s
 syncFrequency: 1m0s
 volumeStatsAggPeriod: 1m0s
+---
+apiVersion: kubeproxy.config.k8s.io/v1alpha1
+bindAddress: 0.0.0.0
+clientConnection:
+  acceptContentTypes: ""
+  burst: 10
+  contentType: application/vnd.kubernetes.protobuf
+  kubeconfig: /var/lib/kube-proxy/kubeconfig.conf
+  qps: 5
+clusterCIDR: ""
+configSyncPeriod: 15m0s
+conntrack:
+  max: null
+  maxPerCore: 32768
+  min: 131072
+  tcpCloseWaitTimeout: 1h0m0s
+  tcpEstablishedTimeout: 24h0m0s
+enableProfiling: false
+healthzBindAddress: 0.0.0.0:10256
+hostnameOverride: "master1"
+iptables:
+  masqueradeAll: false
+  masqueradeBit: 14
+  minSyncPeriod: 0s
+  syncPeriod: 30s
+ipvs:
+  excludeCIDRs: null
+  minSyncPeriod: 0s
+  scheduler: ""
+  syncPeriod: 30s
+kind: KubeProxyConfiguration
+metricsBindAddress: 127.0.0.1:10249
+mode: ""
+nodePortAddresses: ['1.2.3.4/32']
+oomScoreAdj: -999
+portRange: ""
+resourceContainer: /kube-proxy
+udpIdleTimeout: 250ms
